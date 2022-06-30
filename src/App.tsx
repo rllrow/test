@@ -1,24 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Button } from './Components/Button';
+import './App.scss';
+import spinnerImg from './assets/spinner-dark.svg';
+import { useState } from 'react';
+import { DropDown } from './Components/DropDown';
+import { ApiApp } from './Components/ApiApp';
+
+const dropDownContent = [{ title: 'Item1', onClick: () => console.log('click') }, { title: 'Item2' }];
 
 function App() {
+  const [btnLoad, setBtnLoad] = useState(false);
+  const [targetComponent, setTargetComponent] = useState('App');
+
+  const clickHandler = () => {
+    setBtnLoad((v) => !v);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="nav">
+        <div className="nav-value" onClick={() => setTargetComponent('btnExample')}>
+          Button
+        </div>
+        <div className="nav-value" onClick={() => setTargetComponent('drpDownExample')}>
+          DropDown
+        </div>
+        <div className="nav-value" onClick={() => setTargetComponent('App')}>
+          App
+        </div>
+      </div>
+      {targetComponent === 'btnExample' && (
+        <Button loading={btnLoad} disabled={false} onClick={clickHandler}>
+          <img src={spinnerImg} alt="icon" />
+          Click me
+        </Button>
+      )}
+      {targetComponent === 'drpDownExample' && (
+        <>
+          <DropDown trigger="click" content={dropDownContent}>
+            <Button>DropDown</Button>
+          </DropDown>
+          <div>some div</div>
+        </>
+      )}
+      {targetComponent === 'App' && <ApiApp />}
     </div>
   );
 }

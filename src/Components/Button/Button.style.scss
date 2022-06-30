@@ -1,0 +1,108 @@
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+  outline: none;
+  cursor: pointer;
+  box-shadow: 2px 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+  border: none;
+  position: relative;
+  transition: 0.2s;
+  transition-property: box-shadow, transform, opacity;
+  opacity: 1;
+  font-weight: 500;
+  font-family: Roboto sans-serif;
+  text-transform: uppercase;
+  color: rgba(0,0,0,.87);
+  user-select: none;
+  white-space: nowrap;
+
+  .content-wrapper{
+    height: 100%;
+    width: 100%;
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+
+    img {
+      height: 100%;
+    }
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+  &.block {
+    width: 100%;
+  }
+  &.size-min {
+    height: 28px;
+    min-width: 50px;
+    padding: 0 12px;
+  }
+  &.size-large {
+    height: 44px;
+    min-width: 78px;
+    padding: 0 20px;
+  }
+  &.size-default {
+    padding:  0 16px;
+    height: 36px;
+    min-width: 64px;
+  }
+  &.type-danger {
+    background: #c94a4a;
+  }
+  &.type-warning {
+    background: #eade2f;
+  }
+  &.type-success {
+    background: #299b29;
+  }
+  &.type-primary {
+    background: #4456cb;
+  }
+
+}
+
+
+
+$spinnerSize: 20;
+svg.spinner {
+  position: absolute;
+  width: $spinnerSize + px;
+  height: $spinnerSize + px;
+
+  circle {
+    fill: transparent;
+    stroke: #1d1f1f;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-dasharray: (3.14 * $spinnerSize);
+    transform-origin: (0.5px * $spinnerSize) (0.5px * $spinnerSize) 0;
+    animation: spinner 4s linear infinite;
+  }
+
+  @keyframes spinner {
+    0% {
+      stroke-dashoffset: (0.66 * $spinnerSize);
+      transform: rotate(0deg);
+    }
+    50% {
+      stroke-dashoffset: (3.14 * $spinnerSize);
+      transform: rotate(540deg);
+    }
+    100% {
+      stroke-dashoffset: (0.66 * $spinnerSize);
+      transform: rotate(1080deg);
+    }
+  }
+}

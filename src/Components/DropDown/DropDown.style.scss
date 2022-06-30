@@ -1,0 +1,35 @@
+.dropDown-container {
+  font: 16px Roboto sans-serif;
+  position: relative;
+
+
+.dropDown-content {
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%,0%);
+  opacity: 0;
+  transition: 0.5s;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 2px 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+  border-radius: 4px;
+  background: white;
+  &.active {
+    opacity: 1;
+    transition: 0.5s;
+
+  }
+
+}
+
+ .content-item {
+   padding: 0 16px;
+   cursor: pointer;
+ }
+}
